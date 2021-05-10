@@ -1,0 +1,29 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    username: root
+    password: sigh010203
+    url: jdbc:mysql://139.198.114.100:3306/sigh?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    #url: jdbc:mysql://192.168.81.129:3306/sigh
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/ #重启目录
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效
+logging:
+  config: classpath:log4j2.xml
+  level:
+    cn.jay.repository: trace
+#mybatis:
+ # config-location:classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+ # mapper-locations:classpath*:com.mars.sigh/**/dao/xml/*.xml
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+  mapperLocations: classpath*:com/mars/sigh/dev/**/mapper/*.xml
